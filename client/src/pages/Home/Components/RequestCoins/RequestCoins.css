@@ -1,0 +1,16 @@
+
+.form-floating>label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem 2rem !important;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out,transform .1s ease-in-out;
+}
+.form-floating>.form-control {
+    padding: 1rem 1em;
+    width: 100% !important;
+}

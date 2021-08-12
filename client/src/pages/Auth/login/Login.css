@@ -1,0 +1,23 @@
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
+  }
+  
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+.mx-auto{
+  margin-top: 100px;
+}
+
+
+  
+.card-signin .form-label-group input {
+  height: auto;
+  border-radius: .5rem;
+  width: 100%;
+  background-color: rgb(228, 227, 227);
+  border: 2px #93329E solid !important;
+}

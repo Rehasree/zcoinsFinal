@@ -1,0 +1,49 @@
+.card-1 {
+    width: 450px !important;
+    padding: 50px !important;
+    border-radius: 20px !important;
+    background: #fff;
+    border: none;
+    height: 450px !important;
+    position: relative;
+    margin-top: 100px !important;
+}
+
+.text-info{
+    color: #440A67 !important;
+}
+
+.btn-info{
+    background-color: #440A67!important;
+    color: white;
+}
+
+.mobile-text {
+    color: #93329E !important;
+    font-size: 15px
+}
+
+.form-control {
+    margin-right: 12px
+}
+
+.form-control:focus {
+    color: #440A67;
+    background-color: #fff;
+    border-color: #440A67;
+    outline: 0;
+    box-shadow: none
+}
+
+.cursor {
+    cursor: pointer
+}
+button, input, optgroup, select, textarea {
+    margin: 15px;
+    font-family: inherit;
+    font-size: 30px;
+    color: #440A67;
+    line-height: inherit;
+    height: 50px;
+    width: 50px !important;
+}

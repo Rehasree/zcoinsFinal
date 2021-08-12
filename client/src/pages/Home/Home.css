@@ -1,0 +1,101 @@
+card{
+    padding: 100px;
+}
+
+h2 {
+    font-size: 60px;
+    background: -webkit-linear-gradient(#440A67, #440A67);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: cursive;
+    font-weight: bolder;
+  }
+h3{
+    font-family: cursive;
+    padding: 10px;
+    color:#93329E;
+}
+.data-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 50%;
+    text-decoration: none;
+    background: white;
+    margin:1em;
+    width: 150px;
+    height: 150px;
+    padding: 45px;
+    box-shadow: 0 1.5em 2.5em -0.5em rgba(0, 0, 0, 0.1);
+    transition: transform 0.45s ease, background 0.45s ease;
+    border: 3px solid #440A67;
+  }
+  .data-card h3 {
+    color: #440A67;
+    font-size: 3.5em;
+    font-weight: 600;
+    line-height: 1;
+    transition: color 0.45s ease, border 0.45s ease;
+  }
+  .data-card .MuiSvgIcon-root {
+    font-size: 80px !important;
+    color: #440A67;
+    margin-top: -30px !important;
+    margin-left: -20px !important;
+}
+  .data-card:hover {
+    background: #440A67;
+    transform: scale(1.02);
+    border: 3px solid #FFFFFF;
+  }
+  .data-card:hover h3 .MuiSvgIcon-root{
+    color: #FFFFFF !important;
+  }
+  @-webkit-keyframes point {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0.125em);
+    }
+  }
+  
+  @keyframes point {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0.125em);
+    }
+  }
+
+  .pros h4{
+    margin: 1em;
+  }
+
+  
+/* COLLAPSABLE TABS */
+.acptCoins{
+    padding: 50px;
+}
+  
+  
+  .box {
+    width: 100% !important;
+    border: 3px dotted #440A67;
+    background:rgba(203, 202, 204, 0.075);
+    padding: 30px;
+  }
+  .box:hover {
+    border: 3px solid #440A67;
+  }
+ 
+  h2 {
+    color: var(--varyDarkBlue);
+    font-weight: var(--weight3);
+  }
+
+  .collapse{
+    width: 100%!important;
+    margin-top: 50px;
+  }
