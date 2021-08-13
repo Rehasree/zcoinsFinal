@@ -16,7 +16,7 @@ const userRoutes = require("./routes/OAuth")
 const infoRoutes = require("./routes/userInfo")
 
 // Connecting to Database  ||"mongodb://localhost:27017/Zcoins"
-const dbUrl = process.env.DB_URL
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/Zcoins"
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -47,11 +47,11 @@ app.use(infoRoutes)
 // Serve Static assets if in production
 if (process.env.NODE_ENV === "production") {
     // Set static folder
-    console.log("In if")
-    app.use(express.static(path.join(__dirname, "Client/build")))
+    console.log("In production")
+    app.use(express.static(path.join(__dirname, "client/build")))
 
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "Client", "build", "index.html"))
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"))
     })
 }
 
