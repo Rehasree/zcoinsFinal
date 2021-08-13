@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-// import { Line, Doughnut, Bar, Radar } from 'react-chartjs-2';
 import { Line} from 'react-chartjs-2';
 import './Graph.css'
 
-// import DatePicker from 'react-datepicker';
-// import { Dropdown } from 'react-bootstrap';
-
 export class Graph extends Component {
-
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -835,7 +828,7 @@ export class Graph extends Component {
                     </li>
                   </ul>
                 </div>
-               <div className="row" align="left">
+                {this.props.isHome ?( <div className="row" align="left">
                  <div className="col">
                     <p><b>Your Balance:</b> {this.props.balance}</p>
                     <p><b>Transactable amount:</b>  {this.props.transactableAmount}</p><br/>
@@ -844,8 +837,14 @@ export class Graph extends Component {
                  <p><b>No. of coins:</b>  {this.props.coins}</p>
                     <p><b>Price of coin:</b> 100/-</p><br/>
                  </div>
-               </div>
-                <Line data={this.state} options={this.state.salesStaticsOptions}  datasetKeyProvider={this.datasetKeyProvider} height={50} width={100} id="salesStatisticsChart" />               
+                 <h2>Your profits through Z coins</h2>
+               </div>):(
+                  <div>
+                    <h2>Profits earned using Z coins in the last one year</h2>
+                  </div>
+               )}
+              
+                <Line  data={this.state} options={this.state.salesStaticsOptions}  datasetKeyProvider={this.datasetKeyProvider} height={50} width={100} id="salesStatisticsChart" />               
         </div> 
       </div>
    );

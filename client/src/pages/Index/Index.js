@@ -12,17 +12,24 @@ import './Index.css'
 function Index() {
     const data = [
         { title: "Investors", count: 2500, prefix: <InsertEmoticonIcon />, delay: "5", postfix: "+" },
-        { title: "Assets Under Managment", count: 10, prefix: "$", delay: "1", postfix: "M" },
-        { title: "Trade Volume", count: 15, prefix: "$", delay: "1", postfix: "B" },
-        { title: "Countries", count: 50, prefix: <PublicIcon />, delay: "1", postfix: "" },
+        { title: "Amount invested", count: 87500, prefix: "$", delay: "5", postfix: "B" },
+        { title: "Profits", count: 7500, prefix: "$", delay: "5", postfix: "M" },
+        { title: "Avg Investment Period", count: 12, delay: "1", postfix: "months" },
     ]
 
     return (
         <div className="home" >
-
+              <div className="background">
+                <div className="cube"></div>
+                <div className="cube"></div>
+                <div className="cube"></div>
+                <div className="cube"></div>
+                <div className="cube"></div>
+                <div className="cube"></div>
+            </div>
             <Container>
                <div className="row">
-                   <div className="col-sm-12 col-lg-6 order-lg-1 order-sm-2 order-xs-2">
+                   <div align="left" className="col-sm-12 col-lg-6 order-lg-1 order-sm-2 order-xs-2">
                         <h1 >LET YOUR MONEY GROW...</h1>
                         <p className="desc d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" >
                             Who said that you need to work hard to get ahead? Put your money in Z coins and just see it grow.
@@ -43,7 +50,7 @@ function Index() {
                             <div className="col">
                                 <div className="shadow-lg p-3 mb-5 bg-white rounded count-box">
                                     <span >
-                                        <NumberCounter end={info.count} delay={info.delay} className="increment" preFix={info.prefix} postFix={info.postfix} />
+                                       <b><NumberCounter end={info.count} delay={info.delay} className="increment" preFix={info.prefix} postFix={info.postfix} /></b> 
                                     </span>
                                     <p>{info.title}</p>
                                 </div>
@@ -80,7 +87,7 @@ function Index() {
 
                 <div className="row">
                 <>
-                    <div className="col-sm-12 col-lg-6 order-lg-1 order-sm-2 order-xs-2">
+                    <div align="left" className="col-sm-12 col-lg-6 order-lg-1 order-sm-2 order-xs-2">
                         <h1 >WHY SHOULD U INVEST?</h1>
                         <p className="desc d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" >
                             You need to invest your money in order to overcome the inflation and Z coins is the best place to do so. 
@@ -90,7 +97,7 @@ function Index() {
                             <br/>
                             Like always, the more the merrier. 
                         </p>
-                       <a href="/auth/login"> <button className="get-started">Checkout our report <ArrowForwardIcon/> </button></a>
+                       <a href="/reports"> <button className="get-started">Checkout our report <ArrowForwardIcon/> </button></a>
                     </div>
                     <div className="col-sm-12 col-lg-6 order-lg-2 order-sm-1 order-xs-1">
                         <img className="img-fluid" src={home3} alt="img" />

@@ -75,6 +75,8 @@ function Modal(props) {
       response = axios.post("/manage-coins", { username: user.username, password: pwd, action: props.action, coins: props.coins })
     else if (command === "requestCoins")
        response = axios.post("/request-coins", { username: user.username, password: pwd, requestedUser: props.phoneNumber, coins: props.coins })
+    else if (command === "TransferMoney")
+       response = axios.post("/request-coins", { username: user.username, password: pwd, requestedUser: props.phoneNumber, coins: props.coins })
 
     response
       .then(res => {

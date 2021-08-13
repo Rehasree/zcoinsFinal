@@ -9,6 +9,8 @@ import Addmoney from './Components/AddMoney/Addmoney';
 import Withdraw from './Components/Withdraw/Withdraw';
 import RequestCoins from './Components/RequestCoins/RequestCoins';
 import BuySellCoins from './Components/BuySellCoins/BuySellCoins';
+import TransferWithinAStationTwoToneIcon from '@material-ui/icons/TransferWithinAStationTwoTone';
+import TransferMoney from './Components/TranferMoney/TransferMoney';
 import { connect } from "react-redux"
 import { useHistory } from "react-router"
 import Graph from './Graph';
@@ -25,14 +27,16 @@ function Home(props) {
         { icon: <AccountBalanceWalletTwoToneIcon />, id: 1, target: "#1", title: "ADD MONEY", info: <Addmoney userValue={props.userValue} /> },
         { icon: <AssignmentReturnTwoToneIcon />, id: 2, target: "#2", title: "WITHDRAW", info: <Withdraw userValue={props.userValue} /> },
         { icon: <SendTwoToneIcon />, id: 3, target: "#3", title: "REQUEST COINS", info: <RequestCoins userValue={props.userValue} /> },
-        { icon: <CheckCircleTwoToneIcon />, id: 4, target: "#4", title: "BUY/SELL COINS", info: <BuySellCoins userValue={props.userValue} /> },
+        { icon: <TransferWithinAStationTwoToneIcon/>, id: 4, target: "#4", title: "TRANSFER COINS", info: <TransferMoney userValue={props.userValue} /> },
+        { icon: <CheckCircleTwoToneIcon />, id: 5, target: "#5", title: "BUY/SELL COINS", info: <BuySellCoins userValue={props.userValue} /> },
+
     ]
     const TotalBalance = props.userValue.money + (100 * props.userValue.coins)
     return (
         <div className="container">
             <div className="row" align="center">
                 <div className="col-12">
-                    <Graph transactableAmount={props.userValue.money} balance={TotalBalance} coins={props.userValue.coins} />
+                    <Graph isHome="true" transactableAmount={props.userValue.money} balance={TotalBalance} coins={props.userValue.coins} />
                 </div>
             </div>
             {/* BENEFITS */}
