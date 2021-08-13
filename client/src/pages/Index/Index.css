@@ -93,14 +93,14 @@ h1{
   left: 90vw;
   top: 180vh!important;
 }
- .cube:nth-child(5) {
+ /* .cube:nth-child(5) {
   left: 7vw;
   top: 250vh!important;
 }
 .cube:nth-child(6) {
   left: 95vw;
   top: 280vh!important;
-}
+} */
 /* .cube:nth-child(7) {
 
   left: 5vw;

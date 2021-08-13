@@ -42,9 +42,15 @@ function BankDetails(props) {
                                             
                                             <select class="form-select form-select-lg mb-3 w-100" name="BankName" aria-label=".form-select-lg example" onChange={handleChange} required>
                                                 <option selected>Select your Bank</option>
-                                                <option value="statebank">State Bank of India</option>
+                                                <option value="StateBank">State Bank of India</option>
                                                 <option value="icici">ICIC Bank</option>
                                                 <option value="Punjab">Punjab and Sind Bank</option>
+                                                <option value="Bank_of_Baroda">Bank of Baroda</option>
+                                                <option value="Bank_of_India">Bank of India</option> 
+                                                <option value="Bank_of_Maharastra">Bank of Maharastra</option>
+                                                <option value="CanaraBank">Canara Bank</option>
+                                                <option value="CentralBank">Central Bank of India</option>
+                                                <option value="IOB">Indian Overseas Bank</option>
                                             </select>
                                         </div>
                                     </div>
