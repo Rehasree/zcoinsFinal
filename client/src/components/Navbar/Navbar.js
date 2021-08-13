@@ -1,15 +1,19 @@
 import React from 'react'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { connect } from "react-redux";
+import { useHistory } from "react-router"
 import axios from "axios"
 
 import './Navbar.css'
 
 function Navbarr(props) {
+   const history = useHistory()
+
    const handleClick = () => {
       axios.get("/auth/logout")
          .then(res => {
             props.dispatch({ type: 'user', value: {} })
+            history.push("/")
          })
          .catch(err => {
             console.log(err)

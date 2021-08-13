@@ -37,13 +37,13 @@ module.exports.manageCoins = async (req, res) => {
         const user = await User.findOne({ username: { $eq: username } })
 
         if (action === "buy") {
-            if (user.money > parseFloat(coins) * 100) {
+            if (user.money >= parseFloat(coins) * 100) {
                 user.money -= parseFloat(coins) * 100
                 user.coins += parseFloat(coins)
                 message = `${parseFloat(coins)} coins are added into your account successfully.`
             }
         } else if (action === "sell") {
-            if (user.coins > parseFloat(coins)) {
+            if (user.coins >= parseFloat(coins)) {
                 user.coins -= parseFloat(coins)
                 user.money += parseFloat(coins) * 100
                 message = `${parseFloat(coins)} coins are successfully selled.`

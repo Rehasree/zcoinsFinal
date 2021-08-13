@@ -15,11 +15,11 @@ function Withdraw(props) {
                     {/*Set label for floatingInput as "Enter the amount you want to withdraw"*/}
                     <label htmlFor="floatingInput" className="floatingInput-label">Enter the amount you want to withdraw</label>
                 </div>
-                
-                  <p>
-                    This amount will be withdrawed into your <strong>{props.userValue.BankName.toUpperCase()}</strong> bank account
+
+                <p>
+                    This amount will be withdrawed into your <strong style={{ textTransform: 'uppercase' }}>{props.userValue.BankName}</strong> bank account
                 </p>
-                <p><strong>Account Number</strong>: {props.userValue.AccountNum}</p> 
+                <p><strong>Account Number</strong>: {props.userValue.AccountNum}</p>
                 <br /> <br />
 
                 <Modal button="Withdraw Amount" dataTarget="#withdraw" id="withdraw" amount={amount} password="true" />

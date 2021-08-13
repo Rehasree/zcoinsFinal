@@ -21,15 +21,15 @@ function Addmoney(props) {
                 {/*Set label for floatingInput as "Enter the amount you want to add*/}
                 <label htmlFor="floatingInput">Enter the amount you want to add</label>
             </div>
-            <p>This amount will be decucted from your <strong>{props.userValue.BankName.toUpperCase()}</strong> bank account</p>
+            <p>This amount will be decucted from your <strong style={{ textTransform: 'uppercase' }}>{props.userValue.BankName}</strong> bank account</p>
             {/*Display the props.userValue.AccountNum in the next line*/}
             <p><strong>Account Number</strong>: {props.userValue.AccountNum}</p>
             <br /> <br />
 
             <Modal button="Add Money" dataTarget="#addMoney" id="addMoney" amount={amount} password="true" />
         </Container>
-   
-   )
+
+    )
 }
 
 export default Addmoney
