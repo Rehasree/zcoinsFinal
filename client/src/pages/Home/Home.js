@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import svg from './images/1.svg'
 import AccountBalanceWalletTwoToneIcon from '@material-ui/icons/AccountBalanceWalletTwoTone';
 import SendTwoToneIcon from '@material-ui/icons/SendTwoTone';
@@ -68,15 +68,13 @@ function Home(props) {
                     <img className="img-fluid" src={svg} alt="img" />
                 </div>
                 <div className="col-sm-12 col-lg-6 content" align="left" >
-                    <h3 align="left">Z-Coins is first of it's type</h3>
+                    <h3 align="left">Investing Simplified</h3>
                     <p className="desc d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" >
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        Z coins is the best way to start investing your money. Don't worry about where to invest, when to invest and how to invest.
+                        Just put your money in Z coins and let the system do the rest. Z coins will automatically invest your money in the best possible way.
                     </p>
                 </div>
             </div >
-
         </div>
     )
 }
