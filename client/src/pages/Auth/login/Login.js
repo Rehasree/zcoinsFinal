@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css'
 import { useHistory } from "react-router"
 import { connect } from "react-redux"
@@ -7,6 +7,10 @@ import axios from "axios"
 function Login(props) {
     const history = useHistory()
     const [Cred, setCred] = useState([]);
+
+    useEffect(() => {
+        if (Object.keys(props.userValue).length) history.push("/home")
+    })
 
     const HandleSubmit = async (e) => {
         e.preventDefault()
@@ -30,7 +34,7 @@ function Login(props) {
     }
 
     const handleChange = (e) => setCred({ ...Cred, [e.target.name]: e.target.value });
-    console.log(Cred)
+
     return (
         <div align="left">
             <div className="container">
