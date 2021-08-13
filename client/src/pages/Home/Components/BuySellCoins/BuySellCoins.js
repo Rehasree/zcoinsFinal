@@ -8,7 +8,6 @@ function BuySellCoins(props) {
     const [countCoins, setCountCoins] = useState(100)
 
     const user = props.userValue
-
     return (
         <Container>
             <br/>
@@ -26,7 +25,7 @@ function BuySellCoins(props) {
             </select>
             </div >
             <div className="col-sm-12 col-lg-6" >
-              <InputSlider setCoins={setCountCoins}/>
+              <InputSlider userValue = {user} action = {action} setCoins={setCountCoins}/>
             </div >
 
             </div>

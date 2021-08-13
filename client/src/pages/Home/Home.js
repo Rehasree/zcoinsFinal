@@ -25,7 +25,7 @@ function Home(props) {
         { icon: <AccountBalanceWalletTwoToneIcon />, id: 1, target: "#1", title: "ADD MONEY", info: <Addmoney userValue={props.userValue} /> },
         { icon: <AssignmentReturnTwoToneIcon />, id: 2, target: "#2", title: "WITHDRAW", info: <Withdraw userValue={props.userValue} /> },
         { icon: <SendTwoToneIcon />, id: 3, target: "#3", title: "REQUEST COINS", info: <RequestCoins/> },
-        { icon: <CheckCircleTwoToneIcon />, id: 4, target: "#4", title: "BUY/SELL COINS", info: <BuySellCoins/>  },
+        { icon: <CheckCircleTwoToneIcon />, id: 4, target: "#4", title: "BUY/SELL COINS", info: <BuySellCoins userValue = {props.userValue}/>  },
     ]
     const TotalBalance = props.userValue.money + (100* props.userValue.coins)
     return (

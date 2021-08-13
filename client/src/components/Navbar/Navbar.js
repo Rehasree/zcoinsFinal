@@ -29,7 +29,7 @@ function Navbarr(props) {
          <Nav>
          {!props.userValue.name? (
                      <>
-                        <Nav.Link href="/auth/login" className="Loginbtn">Login</Nav.Link>
+                        <Nav.Link href="/auth/login" className="Loginbtn">Login/Sign Up</Nav.Link>
                      </>
                   ):(               
                      <NavDropdown title={props.userValue.name} id="basic-nav-dropdown">

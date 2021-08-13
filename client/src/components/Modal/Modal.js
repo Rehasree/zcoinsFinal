@@ -7,7 +7,7 @@ function Modal(props) {
   const isPassword = props.password
   const command = props.id
   const user = props.userValue
-
+  let amount = props.amount
   const handleClick = (e) => {
     if ((command === "addMoney" || command === "withdraw") && props.amount <= 0) {
       if (command === "addMoney") alert("Enter atleast INR 1 to add money")
@@ -57,14 +57,20 @@ function Modal(props) {
       return
     }
     if (command === "withdraw" && props.amount && props.amount > user.money) {
-      alert(`You can't withdraw more than ${user.money}/-`)
-      return
+      if(props.amount > user.money+user.coins*100){
+        alert(`You can't withdraw more than ${user.money+user.coins*100}/-`)
+        return
+      }
+      if(props.amount<=user.money+user.coins*100){
+        alert(`${user.money} will been withdrawn now. Remaining amount will be withdrawn after the stock market opens/closes for the day`)
+        amount = user.money;
+      }
     }
    
     let response
 
     if (command === "addMoney" || command === "withdraw")
-      response = axios.post("/manage-money", { username: user.username, password: pwd, amount: props.amount, command })
+      response = axios.post("/manage-money", { username: user.username, password: pwd, amount:  amount, command })
     else if (command === "buysellCoins")
       response = axios.post("/manage-coins", { username: user.username, password: pwd, action: props.action, coins: props.coins })
     else if (command === "requestCoins")
@@ -106,6 +112,8 @@ function Modal(props) {
               {isPassword && (
                 <div className="form-floating">
                   <input type="password" placeholder="Enter password" className="form-control W-100" id="floatingPassword" name="Password" onChange={handleChange} />
+                  {/*Add label for floatingPassword which says "Enter your password"*/}
+                  <label className="floatingPassword" htmlFor="floatingPassword">Enter your password</label>
                 </div>
               )}
 
