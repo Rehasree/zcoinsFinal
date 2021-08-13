@@ -31,7 +31,7 @@ function Signup(props) {
                 history.push("/auth/otp")
             })
             .catch(err => {
-                alert(err.response.data)
+                alert("Email/Phone Number already exists")
                 return
             })
     }

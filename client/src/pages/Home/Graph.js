@@ -840,7 +840,7 @@ export class Graph extends Component {
                  <h2>Your profits through Z coins</h2>
                </div>):(
                   <div>
-                    <h2>Profits earned using Z coins in the last one year</h2>
+                    <h2>Profits earned using Z coins in the past</h2>
                   </div>
                )}
               

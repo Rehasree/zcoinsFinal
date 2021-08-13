@@ -1,7 +1,9 @@
 card{
     padding: 100px;
 }
-
+.spaceGenerator{
+  min-height: 50px;
+}
 h2 {
     font-size: 60px;
     background: -webkit-linear-gradient(#440A67, #440A67);

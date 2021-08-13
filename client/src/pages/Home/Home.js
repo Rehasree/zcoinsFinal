@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import svg from './images/1.svg'
+import svg2 from './images/4.svg'
 import AccountBalanceWalletTwoToneIcon from '@material-ui/icons/AccountBalanceWalletTwoTone';
 import SendTwoToneIcon from '@material-ui/icons/SendTwoTone';
 import CheckCircleTwoToneIcon from '@material-ui/icons/CheckCircleTwoTone';
@@ -65,7 +66,7 @@ function Home(props) {
                 })}
             </Row>
             <br />
-            <h2 align="left">Do u know????</h2>
+            <h2 align="left">Do you know????</h2>
             <div className="row" style={{ marginTop: "2rem" }}>
 
                 <div className="col-sm-12 col-lg-6">
@@ -79,6 +80,26 @@ function Home(props) {
                     </p>
                 </div>
             </div >
+                <div className="spaceGenerator"></div>
+                <div className="row">
+                <>
+                    <div align="left" className="col-sm-12 col-lg-6 order-lg-1 order-sm-2 order-xs-2">
+                        <h1 >WHY SHOULD U INVEST?</h1>
+                        <p className="desc d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" >
+                            You need to invest your money in order to overcome the inflation and Z coins is the best place to do so. 
+                            Through Z coins, you don't need to have the knowledge of stock market of investing. You can invest your money in different low-risk stocks 
+                            using Z coins.  
+                            Z coins has proved itself by bringing good returns to its investors. Why wait when you can also be an investor?
+                            <br/>
+                            Like always, the more the merrier. 
+                        </p>
+
+                    </div>
+                    <div className="col-sm-12 col-lg-6 order-lg-2 order-sm-1 order-xs-1">
+                        <img className="img-fluid" src={svg2} alt="img" />
+                    </div>
+                </>
+                </div>
         </div>
     )
 }
