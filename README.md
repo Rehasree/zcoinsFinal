@@ -19,11 +19,10 @@ https://he-s3.s3.ap-southeast-1.amazonaws.com/media/sprint/zeta-hacks/team/11440
 https://z-coins.herokuapp.com
 <br/>
 ## Instructions: 
+1.)OTP for phone verification is 1234 by default  <br/>
+2.)0000000001 is a phone number that is there in the database. So any testing can be done on that. 
 <br/>
-1.) OTP for phone verification is 1234 by default  <br/>
-2.) 0000000001 is a phone number that is there in the database. So any testing can be done on that. 
-<br/>
-## Run Commands : <br/>
+## Run Commands:
 1.) Run <b>"npm i"</b> in the root directory <br/>
 2.) Run <b>"npm i"</b> in the root/client directory  <br/>
 3.) Run <b>"npm run dev"</b> in root directory. <br/>
