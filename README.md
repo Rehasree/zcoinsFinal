@@ -6,19 +6,24 @@ The user need not withdraw cash inorder to buy something. The user can buy goods
 ## Request/Accept Coins: 
 The person can request & accept Z-coins from any other Z-coin user using the other person’s mobile number.
 <br/>
-# Technologies Used
+## Technologies Used
 Reactjs,CSS,NodeJs,ExpressJs,Passport,MongoDb,Axios
 <br/>
-# Video : https://youtu.be/L6ks6jjAMvY
+## Video 
+https://youtu.be/L6ks6jjAMvY
 <br/>
-# Presentation : https://he-s3.s3.ap-southeast-1.amazonaws.com/media/sprint/zeta-hacks/team/1144024/ee5b1cfz_coins.pptx
+## Presentation 
+https://he-s3.s3.ap-southeast-1.amazonaws.com/media/sprint/zeta-hacks/team/1144024/ee5b1cfz_coins.pptx
 <br/>
-# Demo : https://z-coins.herokuapp.com
+## Demo 
+https://z-coins.herokuapp.com
 <br/>
-#Instructions:<br/>
+## Instructions: 
+<br/>
 1.) OTP for phone verification is 1234 by default  <br/>
 2.) 0000000001 is a phone number that is there in the database. So any testing can be done on that. <br/>
-# To run the website locally <br/>
+## To run the website locally 
+<br/>
 1.) Run "npm i" in the root directory <br/>
 2.) Run "npm i" in the root/client directory  <br/>
 3.) Run "npm run dev" in root directory. <br/>
