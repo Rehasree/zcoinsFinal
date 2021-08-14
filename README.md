@@ -21,9 +21,9 @@ https://z-coins.herokuapp.com
 ## Instructions: 
 <br/>
 1.) OTP for phone verification is 1234 by default  <br/>
-2.) 0000000001 is a phone number that is there in the database. So any testing can be done on that. <br/>
-## To run the website locally 
+2.) 0000000001 is a phone number that is there in the database. So any testing can be done on that. 
 <br/>
+## To run the website locally:
 1.) Run "npm i" in the root directory <br/>
 2.) Run "npm i" in the root/client directory  <br/>
 3.) Run "npm run dev" in root directory. <br/>
