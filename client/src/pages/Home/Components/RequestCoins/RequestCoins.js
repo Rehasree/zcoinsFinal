@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Container, Col, Row } from 'react-bootstrap';
 import Modal from '../../../../components/Modal/Modal';
 import './RequestCoins.css'
-import axios from 'axios'
 
 function RequestCoins() {
     const [phoneNumber, setPhoneNumber] = useState("")
@@ -22,7 +21,7 @@ function RequestCoins() {
     //         return
     //     })
     // }
-    
+
     return (
         <div>
             <Container align="left">
