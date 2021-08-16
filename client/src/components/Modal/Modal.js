@@ -8,6 +8,7 @@ function Modal(props) {
   const command = props.id
   const user = props.userValue
   let amount = props.amount
+
   const handleClick = (e) => {
     if ((command === "addMoney" || command === "withdraw") && props.amount <= 0) {
       if (command === "addMoney") alert("Enter atleast INR 1 to add money")
@@ -37,16 +38,23 @@ function Modal(props) {
         e.target.removeAttribute("data-target")
         return
       }
-    } else if (command === "requestCoins") {
+    } else if (command === "requestCoins" || command === "transferCoins") {
       if (user.username === props.phoneNumber || props.phoneNumber.length < 10 || props.phoneNumber.length > 10) {
-        alert("You can't request yourself and phone number should contain 10 characters.")
+        if (command === "transferCoins") alert("You can't transfer yourself and phone number should contain 10 characters.")
+        else if (command === "requestCoins") alert("You can't request yourself and phone number should contain 10 characters.")
         e.target.removeAttribute("data-target")
         return
-      } else if (!props.coins) {
-        alert("You need to request atleast one coin.")
+      } else if (!props.coins || props.coins <= 0) {
+        if (command === "transferCoins") alert("You need to transfer atleast one coin.")
+        else if (command === "requestCoins") alert("You need to request atleast one coin.")
         e.target.removeAttribute("data-target")
         return
       }
+    }
+    if (command === "transferCoins" && props.coins > user.coins) {
+      alert(`You can't transfer beyond ${user.coins} coins.`)
+      e.target.removeAttribute("data-target")
+      return
     }
     e.target.setAttribute("data-target", props.dataTarget)
   }
@@ -57,30 +65,30 @@ function Modal(props) {
       return
     }
     if (command === "withdraw" && props.amount && props.amount > user.money) {
-      if(props.amount > user.money+user.coins*100){
-        alert(`You can't withdraw more than ${user.money+user.coins*100}/-`)
+      if (props.amount > user.money + user.coins * 100) {
+        alert(`You can't withdraw more than ${user.money + user.coins * 100}/-`)
         return
       }
-      if(props.amount<=user.money+user.coins*100){
+      if (props.amount <= user.money + user.coins * 100) {
         alert(`${user.money} will been withdrawn now. Remaining amount will be withdrawn after the stock market opens/closes for the day`)
         amount = user.money;
       }
     }
-   
+
     let response
 
     if (command === "addMoney" || command === "withdraw")
-      response = axios.post("/manage-money", { username: user.username, password: pwd, amount:  amount, command })
+      response = axios.post("/manage-money", { username: user.username, password: pwd, amount: amount, command })
     else if (command === "buysellCoins")
       response = axios.post("/manage-coins", { username: user.username, password: pwd, action: props.action, coins: props.coins })
     else if (command === "requestCoins")
-       response = axios.post("/request-coins", { username: user.username, password: pwd, requestedUser: props.phoneNumber, coins: props.coins })
-    else if (command === "TransferMoney")
-       response = axios.post("/request-coins", { username: user.username, password: pwd, requestedUser: props.phoneNumber, coins: props.coins })
+      response = axios.post("/request-coins", { username: user.username, password: pwd, requestedUser: props.phoneNumber, coins: props.coins })
+    else if (command === "transferCoins")
+      response = axios.post("/transfer-coins", { username: user.username, password: pwd, transferedUser: props.phoneNumber, coins: props.coins })
 
     response
       .then(res => {
-        props.dispatch({ type: 'user', value: res.data.user })
+        if (res.data.user) props.dispatch({ type: 'user', value: res.data.user })
         alert(res.data.message)
         setPwd(null)
         window.location.reload()
@@ -94,7 +102,7 @@ function Modal(props) {
   }
 
   const handleChange = (e) => setPwd(e.target.value)
- 
+
   return (
     <div>
       <button type="button" onClick={handleClick} className="btn btn-info w-100" data-toggle="modal">
@@ -110,7 +118,7 @@ function Modal(props) {
               </button>
             </div>
             <div className="modal-body">
-              {props.content}
+              {/* {props.content} */}
               {isPassword && (
                 <div className="form-floating">
                   <input type="password" placeholder="Enter password" className="form-control W-100" id="floatingPassword" name="Password" onChange={handleChange} />

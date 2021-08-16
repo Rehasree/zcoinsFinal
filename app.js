@@ -16,7 +16,7 @@ const userRoutes = require("./routes/OAuth")
 const infoRoutes = require("./routes/userInfo")
 
 // Connecting to Database  ||"mongodb://localhost:27017/Zcoins"
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/Zcoins"
+const dbUrl = /*process.env.DB_URL ||*/ "mongodb://localhost:27017/Zcoins"
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
