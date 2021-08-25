@@ -12,13 +12,15 @@ function Otp(props) {
 
     const handleChange = (otp) => setotp(otp);
     const handleSubmit = () => {
-        if (otp === "1234") {
-            alert("Your mobile number successfully verified 🎉🎉. Please continue the signup procedure")
-            history.push("/auth/bank-details")
-        } else if (!otp || otp.length < 4) {
-            alert("OTP is invalid .Please try again")
-        } else {
-            alert("OTP entered is incorrect please try again")
+        if (!otp || otp.length < 6) alert("OTP is invalid .Please try again")
+        else {
+            window.confirmationResult.confirm(otp).then((result) => {
+                const user = result.user;
+                console.log("User", user)
+                history.push("/auth/bank-details")
+            }).catch((error) => {
+                alert(error.message)
+            });
         }
     }
 
@@ -31,7 +33,7 @@ function Otp(props) {
                     <OtpInput
                         value={otp}
                         onChange={handleChange}
-                        numInputs={4}
+                        numInputs={6}
                         hasErrored="true"
                         separator={<span>-</span>}
                     />
