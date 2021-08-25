@@ -25,11 +25,11 @@ function Home(props) {
     })
 
     const data = [
-        { icon: <AccountBalanceWalletTwoToneIcon />, id: 1, target: "#1", title: "ADD MONEY", info: <Addmoney userValue={props.userValue} /> },
-        { icon: <AssignmentReturnTwoToneIcon />, id: 2, target: "#2", title: "WITHDRAW", info: <Withdraw userValue={props.userValue} /> },
-        { icon: <SendTwoToneIcon />, id: 3, target: "#3", title: "REQUEST COINS", info: <RequestCoins userValue={props.userValue} /> },
-        { icon: <TransferWithinAStationTwoToneIcon/>, id: 4, target: "#4", title: "TRANSFER COINS", info: <TransferMoney userValue={props.userValue} /> },
-        { icon: <CheckCircleTwoToneIcon />, id: 5, target: "#5", title: "BUY/SELL COINS", info: <BuySellCoins userValue={props.userValue} /> },
+        { icon: <AccountBalanceWalletTwoToneIcon />, id: "collapse1", target: "#collapse1", title: "ADD MONEY", info: <Addmoney userValue={props.userValue} /> },
+        { icon: <AssignmentReturnTwoToneIcon />, id: "collapse2", target: "#collapse2", title: "WITHDRAW", info: <Withdraw userValue={props.userValue} /> },
+        { icon: <SendTwoToneIcon />, id: "collapse3", target: "#collapse3", title: "REQUEST COINS", info: <RequestCoins userValue={props.userValue} /> },
+        { icon: <TransferWithinAStationTwoToneIcon/>, id: "collapse4", target: "#collapse4", title: "TRANSFER COINS", info: <TransferMoney userValue={props.userValue} /> },
+        { icon: <CheckCircleTwoToneIcon />, id: "collapse5", target: "#collapse5", title: "BUY/SELL COINS", info: <BuySellCoins userValue={props.userValue} /> },
 
     ]
     const TotalBalance = props.userValue.money + (100 * props.userValue.coins)
@@ -41,30 +41,36 @@ function Home(props) {
                 </div>
             </div>
             {/* BENEFITS */}
-            <Row align="center">
-                {data.map((info, index) => {
-                    return (
-                        <Col key={index} className="pros">
-                            <a className="data-card" data-toggle="collapse" href={info.target} role="button" aria-expanded="false" aria-controls={info.id}>
-                                <h3>{info.icon}</h3>
-                            </a>
-                            <h5>{info.title}</h5>
-                        </Col>
-                    )
-                })}
-                {data.map((info, index) => {
-                    return (
-                        <div key={index} className="collapse" id={info.id}>
-                            <div>
-                                <div className="box"  >
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <Row align="center">
+                        {data.map((info,index)=>{
+                            return(
+                                <Col key={index} className="pros">
+                                <a class=" collapsed data-card" type="button" data-bs-toggle="collapse" data-bs-target={info.target} aria-expanded="false" aria-controls={info.id}>
+                                    <h3>{info.icon}</h3>
+                                </a>
+                                <h5>{info.title}</h5>
+                               </Col>
+                            )
+                        })}
+                    </Row>
+    
+                    {data.map((info,index)=>{
+                        return(
+                             <div id={info.id} class="accordion-collapse collapse" aria-labelledby={info.id} data-bs-parent="#accordionExample">
+                                <div>
+                                <div className="box">
                                     <h3>{info.title}</h3>
                                     {info.info}
                                 </div>
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
-            </Row>
+                        )
+                    })}
+               </div>
+            </div>
+           
             <br />
             <h2 align="left">Do you know????</h2>
             <div className="row" style={{ marginTop: "2rem" }}>
