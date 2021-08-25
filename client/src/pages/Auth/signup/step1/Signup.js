@@ -3,10 +3,36 @@ import { useHistory } from 'react-router';
 import { connect } from "react-redux"
 import './signup.css'
 import axios from "axios"
+import firebase from "../../../../firebase/firebase"
 
 function Signup(props) {
     const history = useHistory();
     const [user, setUser] = useState([]);
+
+    const configureCaptcha = () => {
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+            'size': 'invisible',
+            'callback': (response) => {
+                onSignInSubmit();
+            },
+            "defaultCountry": 'IN'
+        })
+    }
+
+    const onSignInSubmit = () => {
+        configureCaptcha()
+
+        const phoneNumber = `+91${user.mobile}`
+        const appVerifier = window.recaptchaVerifier;
+        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+            .then((confirmationResult) => {
+                window.confirmationResult = confirmationResult;
+                console.log("OTP has been sent.")
+                history.push("/auth/otp")
+            }).catch((error) => {
+                console.log("Failed to send SMS.")
+            });
+    }
 
     const HandleSubmit = async (e) => {
         e.preventDefault()
@@ -28,7 +54,7 @@ function Signup(props) {
                 delete user["salt"]
                 props.dispatch({ type: 'user', value: user })
                 console.log('submitted')
-                history.push("/auth/otp")
+                onSignInSubmit()
             })
             .catch(err => {
                 alert("Email/Phone Number already exists")
@@ -47,6 +73,7 @@ function Signup(props) {
                             <div className="card-body">
                                 <h5 className="card-title text-center">Sign Up</h5>
                                 <form className="form-signin" autoComplete="nope" onSubmit={HandleSubmit}>
+                                    <div id="sign-in-button"></div>
                                     <div className="row">
                                         <div className="col">
                                             <div className="form-label-group">
