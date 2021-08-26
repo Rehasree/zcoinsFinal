@@ -64,12 +64,21 @@ function Signup(props) {
 
     const handleChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
     console.log(user)
+    if(user.Birthdate){
+        var bday = user.Birthdate;
+        var year = bday.substring(0,4);
+        user.BirthYear = year;
+        var month = bday.substring(5,7);
+        user.BirthMonth = month;
+        var birthDay = bday.substring(8,10);
+        user.birthDay = birthDay;
+    }
     return (
         <div align="left">
             <div className="container">
                 <div className="row">
                     <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                        <div className="card card-signin my-5" style={{minHeight:"770px!important"}}>
+                        <div className="card-signin my-5" >
                             <div className="card-body">
                                 <h5 className="card-title text-center">Sign Up</h5>
                                 <form className="form-signin" autoComplete="nope" onSubmit={HandleSubmit}>
@@ -97,7 +106,11 @@ function Signup(props) {
                                             </div>
                                         </div>
                                     </div>
-
+                                        <div className="form-label-group">
+                                        <input type="date" name="Birthdate" id="inputDAY" className="form-control" onChange={handleChange}
+                                            placeholder="DAY" required />
+                                        <label htmlFor="inputDAY">Enter your Date of Birth</label>
+                                        </div>
                                     <div className="form-label-group">
                                         <input type="phone" name="mobile" id="inputtel" className="form-control" onChange={handleChange}
                                             placeholder="tel" required />

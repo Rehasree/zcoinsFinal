@@ -11,19 +11,12 @@
   .mx-auto{
     margin-top: 100px;
   }
-  .card {
-    width: 600px !important;
-    padding: 10px;
-    border-radius: 20px;
-    background: #fff;
-    border: none;
-    min-height: 770px !important; 
-    position: relative;
-}
+ 
   .card-signin .card-title {
     margin-bottom: 2rem;
     font-weight: 300;
     font-size: 1.5rem;
+    width: 500px !important;
   }
   .card {
     position: relative;
