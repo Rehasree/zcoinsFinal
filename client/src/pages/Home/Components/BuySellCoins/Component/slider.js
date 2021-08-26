@@ -34,7 +34,7 @@ export default function InputSlider(props) {
   return (
     <div >
       <Typography id="input-slider" gutterBottom>
-        No. of Coins {steps}
+        No. of Coins
       </Typography>
       <Grid container spacing={2} alignItems="center">
         <Grid item>
