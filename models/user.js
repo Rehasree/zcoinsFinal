@@ -10,12 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    BankName: String,
-    AccountNum: String,
-    IFSCcode: String,
-    holderName: String,
-    PanCardNum: String,
-    ProofType: String,
+    Birthdate: Date,
+    PanCardNo: String,
+    BirthYear: Number,
+    BirthMonth: Number,
+    birthDay: Number,
     money: {
         type: Number,
         default: 0

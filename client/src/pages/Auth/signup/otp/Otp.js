@@ -3,6 +3,7 @@ import OtpInput from 'react-otp-input';
 import { useHistory } from 'react-router';
 import './otp.css'
 import { connect } from "react-redux"
+import axios from "axios"
 
 function Otp(props) {
     const [otp, setotp] = useState(null);
@@ -14,13 +15,19 @@ function Otp(props) {
     const handleSubmit = () => {
         if (!otp || otp.length < 6) alert("OTP is invalid .Please try again")
         else {
-            window.confirmationResult.confirm(otp).then((result) => {
-                const user = result.user;
-                console.log("User", user)
-                history.push("/auth/bank-details")
-            }).catch((error) => {
-                alert(error.message)
-            });
+            window.confirmationResult.confirm(otp)
+                .then(async (result) => {
+                    const user = result.user;
+                    console.log("User", user)
+                    const res = await axios.post("/auth/update-info", props.userValue)
+                    if (res.status === 200) {
+                        console.log(res.data)
+                        props.dispatch({ type: 'user', value: {} })
+                        history.push("/auth/login")
+                    }
+                }).catch((error) => {
+                    alert(error.message)
+                });
         }
     }
 

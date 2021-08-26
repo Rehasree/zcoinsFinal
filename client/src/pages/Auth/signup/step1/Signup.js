@@ -31,6 +31,7 @@ function Signup(props) {
                 history.push("/auth/otp")
             }).catch((error) => {
                 console.log("Failed to send SMS.")
+                alert("Failed to send SMS.")
             });
     }
 
@@ -44,6 +45,11 @@ function Signup(props) {
 
         if (user.password !== user.confirmPassword) {
             alert("Passwords are not matched.")
+            return
+        }
+
+        if (!user.Birthdate) {
+            alert("Enter your birthday.")
             return
         }
 
@@ -64,13 +70,13 @@ function Signup(props) {
 
     const handleChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
     console.log(user)
-    if(user.Birthdate){
+    if (user.Birthdate) {
         var bday = user.Birthdate;
-        var year = bday.substring(0,4);
+        var year = bday.substring(0, 4);
         user.BirthYear = year;
-        var month = bday.substring(5,7);
+        var month = bday.substring(5, 7);
         user.BirthMonth = month;
-        var birthDay = bday.substring(8,10);
+        var birthDay = bday.substring(8, 10);
         user.birthDay = birthDay;
     }
     return (
@@ -93,9 +99,9 @@ function Signup(props) {
                                         </div>
                                         <div className="col">
                                             <div className="form-label-group">
-                                                <input type="text" name="Mname" id="input" className="form-control" onChange={handleChange}
+                                                <input type="text" name="mname" id="mname" className="form-control" onChange={handleChange}
                                                     placeholder="text address" autoFocus />
-                                                <label htmlFor="input">Middle name</label>
+                                                <label htmlFor="mname">Middle name</label>
                                             </div>
                                         </div>
                                         <div className="col">
@@ -106,11 +112,11 @@ function Signup(props) {
                                             </div>
                                         </div>
                                     </div>
-                                        <div className="form-label-group">
+                                    <div className="form-label-group">
                                         <input type="date" name="Birthdate" id="inputDAY" className="form-control" onChange={handleChange}
                                             placeholder="DAY" required />
                                         <label htmlFor="inputDAY">Enter your Date of Birth</label>
-                                        </div>
+                                    </div>
                                     <div className="form-label-group">
                                         <input type="phone" name="mobile" id="inputtel" className="form-control" onChange={handleChange}
                                             placeholder="tel" required />
@@ -137,7 +143,7 @@ function Signup(props) {
                                         <label htmlFor="inputPassword1">Confirm Password</label>
                                     </div>
                                     <br /><br />
-                                    <button style={{background:"#440A67",color:"white"}} className="btn btn-lg text-uppercase w-100" type="submit">
+                                    <button style={{ background: "#440A67", color: "white" }} className="btn btn-lg text-uppercase w-100" type="submit">
                                         Next
                                     </button>
                                 </form>

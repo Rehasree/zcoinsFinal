@@ -1,25 +1,80 @@
 const User = require("../models/user")
+const Bankdetails = require("../models/bankdetails")
+const axios = require("axios")
+const uuid = require("uuid").v4
 
 module.exports.manageMoney = async (req, res) => {
     try {
         const { username, password, amount, command } = req.body
-        let message
+        let message, debitAccountID, creditAccountID, remarks
         const verify = await req._passport.instance._strategies.local._verify(username, password)
 
         if (!verify.user) throw verify.error.message
 
         const user = await User.findOne({ username: { $eq: username } })
+        if (!user) throw "Their is no account registered with this phone number."
 
+        const bank = await Bankdetails.findOne({ username: { $eq: username } })
+        if (!bank) throw "Sorry we can't able to fetch your bank details."
+
+        // Set account details dynamically
         if (command === "addMoney") {
-            user.money += parseFloat(amount)
-            message = "Your money is added successfully."
-        } else if (command == "withdraw") {
-            user.money -= parseFloat(amount)
-            message = `Your withdraw amount of ${amount}/- was successfull.`
+            debitAccountID = "641db511-875c-4e9e-9698-a95dd87fc989"
+            creditAccountID = bank.accountID
+            remarks = "Add money."
+        }
+        else if (command == "withdraw") {
+            debitAccountID = bank.accountID
+            creditAccountID = "641db511-875c-4e9e-9698-a95dd87fc989"
+            remarks = "Withdraw money."
         }
 
-        await user.save()
-        res.status(200).json({ message, user })
+        const transferData = {
+            requestID: uuid(),
+            amount: {
+                currency: "INR",
+                amount: amount * 100
+            },
+            transferCode: "A2A_VBOPayout-VBO2U_AUTH",
+            debitAccountID,
+            creditAccountID,
+            transferTime: 1574741608000,
+            remarks,
+            attributes: {}
+        }
+
+        axios({
+            method: "POST",
+            url: "https://fusion.preprod.zeta.in/api/v1/ifi/140793/transfers",
+            data: JSON.stringify(transferData),
+            headers: {
+                "Content-Type": "application/json",
+                "X-Zeta-AuthToken": process.env.FUSION_AUTH_TOKEN
+            }
+        }).then(async transferRes => {
+            if (transferRes.data.status !== 'SUCCESS') throw "Unable to make transaction."
+
+            const transferData = transferRes.data
+            if (command === "addMoney") {
+                user.money += parseFloat(amount)
+                message = "Your money is added successfully."
+            } else if (command == "withdraw") {
+                user.money -= parseFloat(amount)
+                message = `Your withdraw amount of ${amount}/- was successfull.`
+            }
+
+            bank.transactions.push({
+                transaction_requestId: transferData.requestID, transferID: transferData.transferID, timeStamp: new Date()
+            })
+
+            await bank.save()
+            await user.save()
+            res.status(200).json({ message, user })
+
+        }).catch(err => {
+            console.log("error ", err)
+            res.status(500).send(err)
+        })
     } catch (err) {
         console.log(err)
         res.status(500).send(err)
