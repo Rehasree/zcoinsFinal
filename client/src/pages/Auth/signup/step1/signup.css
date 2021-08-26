@@ -17,7 +17,7 @@
     border-radius: 20px;
     background: #fff;
     border: none;
-    height: 550px !important; 
+    min-height: 770px !important; 
     position: relative;
 }
   .card-signin .card-title {

@@ -69,7 +69,7 @@ function Signup(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                        <div className="card card-signin my-5">
+                        <div className="card card-signin my-5" style={{minHeight:"770px!important"}}>
                             <div className="card-body">
                                 <h5 className="card-title text-center">Sign Up</h5>
                                 <form className="form-signin" autoComplete="nope" onSubmit={HandleSubmit}>
@@ -80,6 +80,13 @@ function Signup(props) {
                                                 <input type="text" name="fname" id="input" className="form-control" onChange={handleChange}
                                                     placeholder="text address" required autoFocus />
                                                 <label htmlFor="input">First name</label>
+                                            </div>
+                                        </div>
+                                        <div className="col">
+                                            <div className="form-label-group">
+                                                <input type="text" name="Mname" id="input" className="form-control" onChange={handleChange}
+                                                    placeholder="text address" autoFocus />
+                                                <label htmlFor="input">Middle name</label>
                                             </div>
                                         </div>
                                         <div className="col">
@@ -97,6 +104,11 @@ function Signup(props) {
                                         <label htmlFor="inputtel">Mobile number</label>
                                     </div>
                                     <div className="form-label-group">
+                                        <input type="text" name="PanCardNo" id="inputPAN" className="form-control" onChange={handleChange}
+                                            placeholder="PAN" required />
+                                        <label htmlFor="inputPAN">Enter Your PAN Card Number for KYC</label>
+                                    </div>
+                                    <div className="form-label-group">
                                         <input type="email" name="email" id="email" className="form-control" onChange={handleChange}
                                             placeholder="email" required />
                                         <label htmlFor="email">Email</label>
@@ -111,7 +123,7 @@ function Signup(props) {
                                             placeholder="Password" required />
                                         <label htmlFor="inputPassword1">Confirm Password</label>
                                     </div>
-                                    <br /> <br />
+                                    <br /><br />
                                     <button style={{background:"#440A67",color:"white"}} className="btn btn-lg text-uppercase w-100" type="submit">
                                         Next
                                     </button>

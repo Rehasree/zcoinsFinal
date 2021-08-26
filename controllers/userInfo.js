@@ -46,7 +46,7 @@ module.exports.manageCoins = async (req, res) => {
             if (user.coins >= parseFloat(coins)) {
                 user.coins -= parseFloat(coins)
                 user.money += parseFloat(coins) * 100
-                message = `${parseFloat(coins)} coins are successfully selled.`
+                message = `${parseFloat(coins)} coins are successfully sold.`
             }
         }
 
