@@ -40,16 +40,17 @@ function Login(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                        <div className="card-signin my-5">
+                        <div className="card-signin my-5" align="center">
+                        <h3 style={{margin:"4px"}}>Login</h3>
                             <div className="card-body">
-                                <h5 className="card-title text-center">Login</h5>
+                               
                                 <form className="form-signin" autoComplete="nope" onSubmit={HandleSubmit}>
-                                    <div className="form-label-group">
+                                    <div className="form-floating mb-3">
                                         <input type="phone" name="mobile" id="inputtel" className="form-control" onChange={handleChange}
                                             placeholder="tel" required />
                                         <label htmlFor="inputtel">Mobile number</label>
                                     </div>
-                                    <div className="form-label-group">
+                                    <div className="form-floating mb-3">
                                         <input type="password" name="password" id="inputPassword" className="form-control" onChange={handleChange}
                                             placeholder="Password" required />
                                         <label htmlFor="inputPassword">Password</label>

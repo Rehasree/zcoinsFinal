@@ -18,7 +18,7 @@ export default class Base extends Component {
       return (
         <div>
             <Navbarr />
-            <div style={{minHeight:"90vh"}} >
+            <div style={{minHeight:"90vh",marginTop:"50px"}} >
               {this.props.children}
             </div>
             <Footer/>

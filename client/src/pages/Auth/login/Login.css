@@ -12,12 +12,9 @@
   margin-top: 100px;
 }
 
-
-  
-.card-signin .form-label-group input {
+.card-signin .form-floating input {
   height: auto;
   border-radius: .5rem;
   width: 100%;
-  background-color: rgb(228, 227, 227);
   border: 2px #93329E solid !important;
 }

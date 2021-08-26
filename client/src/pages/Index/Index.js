@@ -1,5 +1,5 @@
 import React from 'react'
-import home from './images/1.svg';
+import home from './images/1.png';
 import home2 from './images/2.svg';
 import home3 from './images/3.svg'
 import { Container } from 'react-bootstrap';
@@ -39,12 +39,12 @@ function Index() {
                         <a href="/auth/login"><button className="get-started">Get started <ArrowForwardIcon /> </button></a>
                     </div>
                     <div className="col-sm-12 col-lg-6 order-lg-2 order-sm-1 order-xs-1">
-                        <img id="float" className="img-fluid" src={home} alt="img" />
+                        <img id="float" className="img-fluid animated" src={home} alt="img" />
                     </div>
                 </div>
                 <br /><br />
                 <div className="row" >
-                    {data.map((info, index) => {
+                    {data.map((info) => {
                         return (
                             <div className="col">
                                 <div className="shadow-lg p-3 mb-5 bg-white rounded count-box">
@@ -62,7 +62,7 @@ function Index() {
                 <div className="row" style={{ marginTop: "6rem" }}>
                     <>
                         <div className="col-sm-12 col-lg-6">
-                            <img style={{ padding: "10px", width: "400px", height: "400px" }} className="img-fluid" src={home2} alt="img" />
+                            <img style={{ padding: "10px", width: "400px", height: "400px" }} className="img-fluid animated" src={home2} alt="img" />
                         </div>
                         <div className="col-sm-12 col-lg-6 content" align="left">
                             <h1 >Smartest way of investing...</h1>
@@ -100,7 +100,7 @@ function Index() {
                             <a href="/reports"> <button className="get-started">Checkout our report <ArrowForwardIcon /> </button></a>
                         </div>
                         <div className="col-sm-12 col-lg-6 order-lg-2 order-sm-1 order-xs-1">
-                            <img className="img-fluid" src={home3} alt="img" />
+                            <img className="img-fluid animated" src={home3} alt="img" />
                         </div>
                     </>
                 </div>

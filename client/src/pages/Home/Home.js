@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap';
-import svg from './images/1.svg'
+import svg from './images/2.svg'
 import svg2 from './images/4.svg'
 import AccountBalanceWalletTwoToneIcon from '@material-ui/icons/AccountBalanceWalletTwoTone';
 import SendTwoToneIcon from '@material-ui/icons/SendTwoTone';
@@ -76,7 +76,7 @@ function Home(props) {
             <div className="row" style={{ marginTop: "2rem" }}>
 
                 <div className="col-sm-12 col-lg-6">
-                    <img className="img-fluid" src={svg} alt="img" />
+                    <img className="img-fluid animated" src={svg} alt="img" />
                 </div>
                 <div className="col-sm-12 col-lg-6 content" align="left" >
                     <h3 align="left">Investing Simplified</h3>
@@ -102,7 +102,7 @@ function Home(props) {
 
                     </div>
                     <div className="col-sm-12 col-lg-6 order-lg-2 order-sm-1 order-xs-1">
-                        <img className="img-fluid" src={svg2} alt="img" />
+                        <img className="img-fluid animated" src={svg2} alt="img" />
                     </div>
                 </>
                 </div>

@@ -10,6 +10,7 @@ import Otp from './pages/Auth/signup/otp/Otp';
 import BankDetails from './pages/Auth/signup/step2/BankDetails';
 import Kyc from './pages/Auth/signup/KYC/Kyc';
 import Home from "./pages/Home/Home";
+import Profile from './pages/Profile/Profile';
 import Checkout  from "./pages/Checkout/Checkout";
 import { connect } from "react-redux"
 
@@ -46,6 +47,11 @@ function App(props) {
           <Route exact path="/reports">
             <Base>
             <Checkout/>
+            </Base>
+          </Route>
+          <Route exact path="/profile">
+            <Base>
+            <Profile/>
             </Base>
           </Route>
         </Switch>
