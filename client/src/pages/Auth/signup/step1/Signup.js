@@ -64,12 +64,21 @@ function Signup(props) {
 
     const handleChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
     console.log(user)
+    if(user.Birthdate){
+        var bday = user.Birthdate;
+        var year = bday.substring(0,4);
+        user.BirthYear = year;
+        var month = bday.substring(5,7);
+        user.BirthMonth = month;
+        var birthDay = bday.substring(8,10);
+        user.birthDay = birthDay;
+    }
     return (
         <div align="left">
             <div className="container">
                 <div className="row">
                     <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                        <div className="card card-signin my-5">
+                        <div className="card-signin my-5" >
                             <div className="card-body">
                                 <h5 className="card-title text-center">Sign Up</h5>
                                 <form className="form-signin" autoComplete="nope" onSubmit={HandleSubmit}>
@@ -84,17 +93,33 @@ function Signup(props) {
                                         </div>
                                         <div className="col">
                                             <div className="form-label-group">
+                                                <input type="text" name="Mname" id="input" className="form-control" onChange={handleChange}
+                                                    placeholder="text address" autoFocus />
+                                                <label htmlFor="input">Middle name</label>
+                                            </div>
+                                        </div>
+                                        <div className="col">
+                                            <div className="form-label-group">
                                                 <input type="text" name="lname" id="inputtext" className="form-control" onChange={handleChange}
                                                     placeholder="text address" required autoFocus />
                                                 <label htmlFor="inputtext">Last name</label>
                                             </div>
                                         </div>
                                     </div>
-
+                                        <div className="form-label-group">
+                                        <input type="date" name="Birthdate" id="inputDAY" className="form-control" onChange={handleChange}
+                                            placeholder="DAY" required />
+                                        <label htmlFor="inputDAY">Enter your Date of Birth</label>
+                                        </div>
                                     <div className="form-label-group">
                                         <input type="phone" name="mobile" id="inputtel" className="form-control" onChange={handleChange}
                                             placeholder="tel" required />
                                         <label htmlFor="inputtel">Mobile number</label>
+                                    </div>
+                                    <div className="form-label-group">
+                                        <input type="text" name="PanCardNo" id="inputPAN" className="form-control" onChange={handleChange}
+                                            placeholder="PAN" required />
+                                        <label htmlFor="inputPAN">Enter Your PAN Card Number for KYC</label>
                                     </div>
                                     <div className="form-label-group">
                                         <input type="email" name="email" id="email" className="form-control" onChange={handleChange}
@@ -111,7 +136,7 @@ function Signup(props) {
                                             placeholder="Password" required />
                                         <label htmlFor="inputPassword1">Confirm Password</label>
                                     </div>
-                                    <br /> <br />
+                                    <br /><br />
                                     <button style={{background:"#440A67",color:"white"}} className="btn btn-lg text-uppercase w-100" type="submit">
                                         Next
                                     </button>
