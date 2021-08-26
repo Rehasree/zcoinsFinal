@@ -1,0 +1,21 @@
+.Profile {
+    background-color: #440A67;
+    font-size: 18px;
+    color: white;
+    /* text-transform: capitalize; */
+}
+
+.table>thead {
+    vertical-align: bottom;
+    background: #440A67;
+    color: white;
+    font-size: 20px !important;
+}
+.table>tbody {
+    font-size: 20px !important;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    height: 400px !important;
+}
