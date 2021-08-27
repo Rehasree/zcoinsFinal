@@ -85,60 +85,60 @@ function Signup(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                        <div className="card-signin my-5" >
+                        <div className="card-signin my-5" style={{ width: "600px" }}>
                             <div className="card-body">
                                 <h5 className="card-title text-center">Sign Up</h5>
                                 <form className="form-signin" autoComplete="nope" onSubmit={HandleSubmit}>
                                     <div id="sign-in-button"></div>
                                     <div className="row">
                                         <div className="col">
-                                            <div className="form-label-group">
+                                            <div className="form-floating mb-3">
                                                 <input type="text" name="fname" id="input" className="form-control" onChange={handleChange}
                                                     placeholder="text address" required autoFocus />
                                                 <label htmlFor="input">First name</label>
                                             </div>
                                         </div>
                                         <div className="col">
-                                            <div className="form-label-group">
+                                            <div className="form-floating mb-3">
                                                 <input type="text" name="mname" id="mname" className="form-control" onChange={handleChange}
                                                     placeholder="text address" autoFocus />
                                                 <label htmlFor="mname">Middle name</label>
                                             </div>
                                         </div>
                                         <div className="col">
-                                            <div className="form-label-group">
+                                            <div className="form-floating mb-3">
                                                 <input type="text" name="lname" id="inputtext" className="form-control" onChange={handleChange}
                                                     placeholder="text address" required autoFocus />
                                                 <label htmlFor="inputtext">Last name</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="form-label-group">
+                                    <div className="form-floating mb-3">
                                         <input type="date" name="Birthdate" id="inputDAY" className="form-control" onChange={handleChange}
                                             placeholder="DAY" required />
                                         <label htmlFor="inputDAY">Enter your Date of Birth</label>
                                     </div>
-                                    <div className="form-label-group">
+                                    <div className="form-floating mb-3">
                                         <input type="phone" name="mobile" id="inputtel" className="form-control" onChange={handleChange}
                                             placeholder="tel" required />
                                         <label htmlFor="inputtel">Mobile number</label>
                                     </div>
-                                    <div className="form-label-group">
+                                    <div className="form-floating mb-3">
                                         <input type="text" name="PanCardNo" id="inputPAN" className="form-control" onChange={handleChange}
                                             placeholder="PAN" required />
                                         <label htmlFor="inputPAN">Enter Your PAN Card Number for KYC</label>
                                     </div>
-                                    <div className="form-label-group">
+                                    <div className="form-floating mb-3">
                                         <input type="email" name="email" id="email" className="form-control" onChange={handleChange}
                                             placeholder="email" required />
                                         <label htmlFor="email">Email</label>
                                     </div>
-                                    <div className="form-label-group">
+                                    <div className="form-floating mb-3">
                                         <input type="password" name="password" id="inputPassword" className="form-control" onChange={handleChange}
                                             placeholder="Password" required />
                                         <label htmlFor="inputPassword">Password</label>
                                     </div>
-                                    <div className="form-label-group">
+                                    <div className="form-floating mb-3">
                                         <input type="password" name="confirmPassword" id="inputPassword1" className="form-control" onChange={handleChange}
                                             placeholder="Password" required />
                                         <label htmlFor="inputPassword1">Confirm Password</label>

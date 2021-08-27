@@ -163,3 +163,30 @@ module.exports.transferCoins = async (req, res) => {
         res.status(500).send(err)
     }
 }
+
+module.exports.getProfileDetails = async (req, res) => {
+    try {
+
+        const bank = await Bankdetails.findOne({ username: { $eq: req.body.phoneNumber } })
+        if (!bank) throw "Sorry we can't able to fetch your bank details."
+        const accountId = bank.accountID
+
+        axios({
+            method: "GET",
+            url: `https://fusion.preprod.zeta.in/api/v1/ifi/140793/accounts/${accountId}/transactions?pageSize=10&pageNumber=1`,
+            headers: {
+                "Content-Type": "application/json",
+                "X-Zeta-AuthToken": process.env.FUSION_AUTH_TOKEN
+            }
+        }).then(transactions => {
+            res.status(200).send({ transactions: transactions.data.accountTransactionList, bank })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send(err)
+        })
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).send(err)
+    }
+}
