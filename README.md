@@ -73,4 +73,5 @@ Once the Account Holder is created during the signup, his account will be create
 ## Payments API
 
 ### Fund Transfers API
-We use the funds API to transfer Z-coins from one user to another. When a user enters the mobile number of another user and sends him some coins, this API will be used. 
+We use the funds API to add/withdraw money from a user. Zeta has provided us with the details of an account with some balance in it. 
+Whenever a user tries to add money into his wallet, money from this account will be transfered into the user account. And when he tries to withdraw the money from his wallet, they will be added back to the same account that Zeta has provided us. Right now it uses a single account that Zeta has provided, but it can be extended to connect directly to the user's personal bank account in real-world applicaion. 

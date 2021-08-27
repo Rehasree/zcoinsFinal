@@ -15,7 +15,7 @@ module.exports.manageMoney = async (req, res) => {
         if (!user) throw "Their is no account registered with this phone number."
 
         const bank = await Bankdetails.findOne({ username: { $eq: username } })
-        if (!bank) throw "Sorry we can't able to fetch your bank details."
+        if (!bank) throw "Sorry, we are not able to fetch your bank details."
 
         // Set account details dynamically
         if (command === "addMoney") {
