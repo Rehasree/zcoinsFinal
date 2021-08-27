@@ -52,8 +52,9 @@ function Profile(props) {
                     <tr>
                         <th>S.no</th>
                         <th>Transaction ID</th>
-                        <th>Amount</th>
+                        <th>Amount transacted</th>
                         <th>Type of transaction</th>
+                        <th>Remaining balance</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,9 +62,10 @@ function Profile(props) {
                         return (
                             <tr key={index + 1}>
                                 <td>{index + 1}</td>
-                                <td>{transaction.transactionID}</td>
+                                <td style={{ width: "500px" }} align="left">{transaction.transactionID}</td>
                                 <td>{`${transaction.currency} ${transaction.amount / 100}`}</td>
                                 <td>{transaction.recordType}</td>
+                                <td>{transaction.newBalance / 100}</td>
                             </tr>
                         )
                     })}
