@@ -26,7 +26,7 @@ function Otp(props) {
                 }
             } catch (err) {
                 console.log(err)
-                alert(err.message)
+                alert("The Fusion api has timed out. Please try after 5 mins.")
             }
         }
         // else {

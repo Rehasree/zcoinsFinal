@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
     coins: {
         type: Number,
         default: 0
+    },
+    notification: {
+        type: Number,
+        default: 0
     }
 })
 

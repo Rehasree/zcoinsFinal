@@ -67,6 +67,8 @@ module.exports.manageMoney = async (req, res) => {
                 transaction_requestId: transferData.requestID, transferID: transferData.transferID, timeStamp: new Date()
             })
 
+            user.notification += 1;
+
             await bank.save()
             await user.save()
             res.status(200).json({ message, user })
@@ -171,6 +173,9 @@ module.exports.getProfileDetails = async (req, res) => {
         if (!bank) throw "Sorry we can't able to fetch your bank details."
         const accountId = bank.accountID
 
+        const user = await User.findOne({ username: { $eq: req.body.phoneNumber } })
+        if (!user) throw "No user with this phone number."
+
         axios({
             method: "GET",
             url: `https://fusion.preprod.zeta.in/api/v1/ifi/140793/accounts/${accountId}/transactions?pageSize=10&pageNumber=1`,
@@ -178,8 +183,10 @@ module.exports.getProfileDetails = async (req, res) => {
                 "Content-Type": "application/json",
                 "X-Zeta-AuthToken": process.env.FUSION_AUTH_TOKEN
             }
-        }).then(transactions => {
-            res.status(200).send({ transactions: transactions.data.accountTransactionList, bank })
+        }).then(async transactions => {
+            user.notification = 0
+            await user.save()
+            res.status(200).send({ transactions: transactions.data.accountTransactionList, bank, user })
         }).catch(err => {
             console.log(err)
             res.status(500).send(err)

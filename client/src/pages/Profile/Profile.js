@@ -22,6 +22,7 @@ function Profile(props) {
                 .then(res => {
                     setTransactions(res.data.transactions)
                     setBank(res.data.bank)
+                    props.dispatch({ type: 'user', value: res.data.user })
                 })
                 .catch(err => {
                     console.log(err)
