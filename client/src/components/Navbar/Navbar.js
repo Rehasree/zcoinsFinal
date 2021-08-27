@@ -3,11 +3,16 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { connect } from "react-redux";
 import { useHistory } from "react-router"
 import axios from "axios"
-import {Badge} from '@material-ui/core';
+import { Badge } from '@material-ui/core';
 import './Navbar.css'
 
 function Navbarr(props) {
    const history = useHistory()
+
+   if (props.userValue.name) {
+      var name = props.userValue.name.replaceAll("undefined", "");
+      var name = name.replaceAll("-", " ");
+   }
 
    const handleClick = () => {
       axios.get("/auth/logout")
@@ -38,9 +43,8 @@ function Navbarr(props) {
                         </Nav.Link>
                      </>
                   ) : (
-                     // {props.userValue.name}
-                     <NavDropdown title={<Badge  variant="dot" color="secondary" style={{margin:"4px"}}>{props.userValue.name}</Badge>} id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/profile" > <Badge badgeContent={4} color="secondary" style={{margin:"4px"}}> Account Details</Badge> </NavDropdown.Item>
+                     <NavDropdown title={<Badge variant="dot" color="secondary" style={{ margin: "4px" }}>{name}</Badge>} id="basic-nav-dropdown">
+                        <NavDropdown.Item href="/profile" > <Badge badgeContent={4} color="secondary" style={{ margin: "4px" }}> Account Details</Badge> </NavDropdown.Item>
                         <NavDropdown.Item onClick={handleClick}>Logout</NavDropdown.Item>
                      </NavDropdown>
                   )}
