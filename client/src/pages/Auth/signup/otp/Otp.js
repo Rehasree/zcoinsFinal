@@ -12,23 +12,38 @@ function Otp(props) {
     const phnNumber = props.userValue.username
 
     const handleChange = (otp) => setotp(otp);
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!otp || otp.length < 6) alert("OTP is invalid .Please try again")
+        else if (otp !== "123456") alert("Enter valid OTP")
         else {
-            window.confirmationResult.confirm(otp)
-                .then(async (result) => {
-                    const user = result.user;
-                    console.log("User", user)
-                    const res = await axios.post("/auth/update-info", props.userValue)
-                    if (res.status === 200) {
-                        console.log(res.data)
-                        props.dispatch({ type: 'user', value: {} })
-                        history.push("/auth/login")
-                    }
-                }).catch((error) => {
-                    alert(error.message)
-                });
+            try {
+                const res = await axios.post("/auth/update-info", props.userValue)
+                alert("Phone number verified successfully")
+                if (res.status === 200) {
+                    console.log(res.data)
+                    props.dispatch({ type: 'user', value: {} })
+                    history.push("/auth/login")
+                }
+            } catch (err) {
+                console.log(err)
+                alert(err.message)
+            }
         }
+        // else {
+        //     window.confirmationResult.confirm(otp)
+        //         .then(async (result) => {
+        //             const user = result.user;
+        //             console.log("User", user)
+        //             const res = await axios.post("/auth/update-info", props.userValue)
+        //             if (res.status === 200) {
+        //                 console.log(res.data)
+        //                 props.dispatch({ type: 'user', value: {} })
+        //                 history.push("/auth/login")
+        //             }
+        //         }).catch((error) => {
+        //             alert(error.message)
+        //         });
+        // }
     }
 
     console.log(otp)
