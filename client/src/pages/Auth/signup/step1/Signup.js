@@ -60,7 +60,8 @@ function Signup(props) {
                 delete user["salt"]
                 props.dispatch({ type: 'user', value: user })
                 console.log('submitted')
-                onSignInSubmit()
+                // onSignInSubmit()
+                history.push("/auth/otp")
             })
             .catch(err => {
                 alert("Email/Phone Number already exists")
