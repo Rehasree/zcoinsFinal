@@ -8,12 +8,12 @@ import './Navbar.css'
 
 function Navbarr(props) {
    const history = useHistory()
-
+   const [invisible, setInvisible] = React.useState(false);
    if (props.userValue.name) {
       var name = props.userValue.name.replaceAll("undefined", "");
       var name = name.replaceAll("-", " ");
    }
-
+   
    const handleClick = () => {
       axios.get("/auth/logout")
          .then(res => {
@@ -43,7 +43,7 @@ function Navbarr(props) {
                         </Nav.Link>
                      </>
                   ) : (
-                     <NavDropdown title={<Badge variant="dot" color="secondary" style={{ margin: "4px" }}>{name}</Badge>} id="basic-nav-dropdown">
+                     <NavDropdown title={<Badge variant="dot" invisible={invisible} color="secondary" style={{ margin: "4px" }}>{name}</Badge>} id="basic-nav-dropdown">
                         <NavDropdown.Item href="/profile" > <Badge badgeContent={4} color="secondary" style={{ margin: "4px" }}> Account Details</Badge> </NavDropdown.Item>
                         <NavDropdown.Item onClick={handleClick}>Logout</NavDropdown.Item>
                      </NavDropdown>
