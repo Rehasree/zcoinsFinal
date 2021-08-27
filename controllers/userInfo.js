@@ -190,3 +190,14 @@ module.exports.getProfileDetails = async (req, res) => {
         res.status(500).send(err)
     }
 }
+
+module.exports.getDetails = async (req, res) => {
+    try {
+        const { phoneNumber } = req.body
+        const bank = await Bankdetails.findOne({ username: { $eq: phoneNumber } })
+        res.status(200).send(bank)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send(err.message)
+    }
+}

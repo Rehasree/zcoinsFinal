@@ -23,7 +23,7 @@ function Addmoney(props) {
             </div>
             <p>This amount will be decucted from your <strong style={{ textTransform: 'uppercase' }}>{props.userValue.BankName}</strong> bank account</p>
             {/*Display the props.userValue.AccountNum in the next line*/}
-            <p><strong>Account Number</strong>:<span style={{textTransform:"uppercase"}}>{props.userValue.AccountNum}</span> </p>
+            <p><strong>Account Number</strong>: <span>{props.bank.accountID}</span> </p>
             <br /> <br />
 
             <Modal button="Add Money" dataTarget="#addMoney" id="addMoney" amount={amount} password="true" />

@@ -10,6 +10,11 @@ function Profile(props) {
     const [transactions, setTransactions] = useState([])
     const [bank, setBank] = useState({})
 
+    if (props.userValue.name) {
+        var name = props.userValue.name.replaceAll("undefined", "");
+        var name = name.replaceAll("-", " ");
+    }
+
     useEffect(() => {
         if (!Object.keys(props.userValue).length) history.push("/auth/login")
         else {
@@ -30,14 +35,14 @@ function Profile(props) {
             <div className="row Profile p-3 mb-5 rounded">
 
                 <div className="col-6" align="left" >
-                    <p><b>Account Holder Name :</b>    {props.userValue.name} </p>
+                    <p><b>Account Holder Name :</b>    {name} </p>
                     <p ><b>Mobile Number:</b>     {props.userValue.username}</p>
                     <p ><b> E-mail:</b> {props.userValue.email}</p>
                 </div>
 
                 <div className="col-6" align="right" >
-                    <p ><b>Account Holder ID :</b>    {props.userValue.name} </p>
-                    <p ><b>Account ID:</b>     {props.userValue.username}</p>
+                    <p ><b>Account Holder ID :</b>    {bank.accountHolderID} </p>
+                    <p ><b>Account ID:</b>     {bank.accountID}</p>
                 </div>
             </div>
             <h1>Transaction Details</h1>
@@ -46,20 +51,22 @@ function Profile(props) {
                 <thead>
                     <tr>
                         <th>S.no</th>
-                        {Array.from({ length: 4 }).map((_, index) => (
-                            <th key={index}>Table heading</th>
-                        ))}
+                        <th>Transaction ID</th>
+                        <th>Amount</th>
+                        <th>Type of transaction</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.from({ length: 8 }).map((_, index) => (
-                        <tr>
-                            <td>{index}</td>
-                            {Array.from({ length: 4 }).map((_, index) => (
-                                <td key={index}>Table cell {index}</td>
-                            ))}
-                        </tr>
-                    ))}
+                    {transactions.map((transaction, index) => {
+                        return (
+                            <tr key={index + 1}>
+                                <td>{index + 1}</td>
+                                <td>{transaction.transactionID}</td>
+                                <td>{`${transaction.currency} ${transaction.amount / 100}`}</td>
+                                <td>{transaction.recordType}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </Table>
         </div>

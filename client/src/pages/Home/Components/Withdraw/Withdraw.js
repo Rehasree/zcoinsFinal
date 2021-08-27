@@ -19,7 +19,7 @@ function Withdraw(props) {
                 <p>
                     This amount will be withdrawed into your <strong style={{ textTransform: 'uppercase' }}>{props.userValue.BankName}</strong> bank account
                 </p>
-                <p><strong>Account Number</strong>: {props.userValue.AccountNum}</p>
+                <p><strong>Account Number</strong>: {props.bank.accountID}</p>
                 <br /> <br />
 
                 <Modal button="Withdraw Amount" dataTarget="#withdraw" id="withdraw" amount={amount} password="true" />

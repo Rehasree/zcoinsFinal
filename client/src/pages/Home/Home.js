@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import svg from './images/2.svg'
 import svg2 from './images/4.svg'
@@ -16,22 +16,34 @@ import { connect } from "react-redux"
 import { useHistory } from "react-router"
 import Graph from './Graph';
 import './Home.css'
+import axios from "axios"
 
 function Home(props) {
     const history = useHistory()
+    const [bank, setBank] = useState({})
 
     useEffect(() => {
         if (!Object.keys(props.userValue).length) history.push("/auth/login")
-    })
+        else {
+            axios.post("/get-account-details", { phoneNumber: props.userValue.username })
+                .then(res => {
+                    setBank(res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                    alert(err.message)
+                })
+        }
+    }, [])
 
     const data = [
-        { icon: <AccountBalanceWalletTwoToneIcon />, id: "collapse1", target: "#collapse1", title: "ADD MONEY", info: <Addmoney userValue={props.userValue} /> },
-        { icon: <AssignmentReturnTwoToneIcon />, id: "collapse2", target: "#collapse2", title: "WITHDRAW", info: <Withdraw userValue={props.userValue} /> },
+        { icon: <AccountBalanceWalletTwoToneIcon />, id: "collapse1", target: "#collapse1", title: "ADD MONEY", info: <Addmoney userValue={props.userValue} bank={bank} /> },
+        { icon: <AssignmentReturnTwoToneIcon />, id: "collapse2", target: "#collapse2", title: "WITHDRAW", info: <Withdraw userValue={props.userValue} bank={bank} /> },
         { icon: <SendTwoToneIcon />, id: "collapse3", target: "#collapse3", title: "REQUEST COINS", info: <RequestCoins userValue={props.userValue} /> },
-        { icon: <TransferWithinAStationTwoToneIcon/>, id: "collapse4", target: "#collapse4", title: "TRANSFER COINS", info: <TransferMoney userValue={props.userValue} /> },
+        { icon: <TransferWithinAStationTwoToneIcon />, id: "collapse4", target: "#collapse4", title: "TRANSFER COINS", info: <TransferMoney userValue={props.userValue} /> },
         { icon: <CheckCircleTwoToneIcon />, id: "collapse5", target: "#collapse5", title: "BUY/SELL COINS", info: <BuySellCoins userValue={props.userValue} /> },
-
     ]
+
     const TotalBalance = props.userValue.money + (100 * props.userValue.coins)
     return (
         <div className="container">
@@ -44,33 +56,33 @@ function Home(props) {
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <Row align="center">
-                        {data.map((info,index)=>{
-                            return(
+                        {data.map((info, index) => {
+                            return (
                                 <Col key={index} className="pros">
-                                <a class=" collapsed data-card" type="button" data-bs-toggle="collapse" data-bs-target={info.target} aria-expanded="false" aria-controls={info.id}>
-                                    <h3>{info.icon}</h3>
-                                </a>
-                                <h5>{info.title}</h5>
-                               </Col>
+                                    <a class=" collapsed data-card" type="button" data-bs-toggle="collapse" data-bs-target={info.target} aria-expanded="false" aria-controls={info.id}>
+                                        <h3>{info.icon}</h3>
+                                    </a>
+                                    <h5>{info.title}</h5>
+                                </Col>
                             )
                         })}
                     </Row>
-    
-                    {data.map((info,index)=>{
-                        return(
-                             <div id={info.id} class="accordion-collapse collapse" aria-labelledby={info.id} data-bs-parent="#accordionExample">
+
+                    {data.map((info, index) => {
+                        return (
+                            <div id={info.id} class="accordion-collapse collapse" aria-labelledby={info.id} data-bs-parent="#accordionExample">
                                 <div>
-                                <div className="box">
-                                    <h3>{info.title}</h3>
-                                    {info.info}
-                                </div>
+                                    <div className="box">
+                                        <h3>{info.title}</h3>
+                                        {info.info}
+                                    </div>
                                 </div>
                             </div>
                         )
                     })}
-               </div>
+                </div>
             </div>
-           
+
             <br />
             <h2 align="left">Do you know????</h2>
             <div className="row" style={{ marginTop: "2rem" }}>
@@ -86,18 +98,18 @@ function Home(props) {
                     </p>
                 </div>
             </div >
-                <div className="spaceGenerator"></div>
-                <div className="row">
+            <div className="spaceGenerator"></div>
+            <div className="row">
                 <>
                     <div align="left" className="col-sm-12 col-lg-6 order-lg-1 order-sm-2 order-xs-2">
                         <h1 >WHY SHOULD U INVEST?</h1>
                         <p className="desc d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" >
-                            You need to invest your money in order to overcome the inflation and Z coins is the best place to do so. 
-                            Through Z coins, you don't need to have the knowledge of stock market of investing. You can invest your money in different low-risk stocks 
-                            using Z coins.  
+                            You need to invest your money in order to overcome the inflation and Z coins is the best place to do so.
+                            Through Z coins, you don't need to have the knowledge of stock market of investing. You can invest your money in different low-risk stocks
+                            using Z coins.
                             Z coins has proved itself by bringing good returns to its investors. Why wait when you can also be an investor?
-                            <br/>
-                            Like always, the more the merrier. 
+                            <br />
+                            Like always, the more the merrier.
                         </p>
 
                     </div>
@@ -105,7 +117,7 @@ function Home(props) {
                         <img className="img-fluid animated" src={svg2} alt="img" />
                     </div>
                 </>
-                </div>
+            </div>
         </div>
     )
 }
