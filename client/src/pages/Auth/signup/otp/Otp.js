@@ -3,12 +3,13 @@ import OtpInput from 'react-otp-input';
 import { useHistory } from 'react-router';
 import './otp.css'
 import { connect } from "react-redux"
+import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from "axios"
 
 function Otp(props) {
     const [otp, setotp] = useState(null);
     const history = useHistory();
-
+    const[verify,setVerify]= useState(false);
     const phnNumber = props.userValue.username
 
     const handleChange = (otp) => setotp(otp);
@@ -17,6 +18,9 @@ function Otp(props) {
         else if (otp !== "123456") alert("Enter valid OTP")
         else {
             try {
+                setVerify(true);
+                console.log("Submitted");
+
                 const res = await axios.post("/auth/update-info", props.userValue)
                 alert("Phone number verified successfully")
                 if (res.status === 200) {
@@ -64,9 +68,14 @@ function Otp(props) {
                     {/* <input type="text" className="form-control" autofocus=""/><input type="text" className="form-control"/><input type="text" className="form-control"/><input type="text" className="form-control"/> */}
                 </div>
                 <div>
-                    <button onClick={handleSubmit} className="btn btn-lg btn-info btn-block text-uppercase w-100" type="submit">
-                        Verify
-                    </button>
+                    {(verify)?(<button className="btn btn-lg btn-info btn-block text-uppercase w-100" type="submit">
+                        <CircularProgress color="secondary"/>
+                    </button>):
+                     <button onClick={handleSubmit} className="btn btn-lg btn-info btn-block text-uppercase w-100" type="submit">
+                     Verify
+                     </button>
+                    }
+                   
                 </div>
             </div>
         </div>
